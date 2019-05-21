@@ -1,5 +1,29 @@
 const functions = require('./functions');
 
+// These methods will run before and after each test
+beforeEach(() => initTest());
+afterEach(() => endTest());
+
+const initTest = () => console.log('Starting test');
+const endTest = () => console.log('Ending test');
+
+// These will run only once each
+beforeAll(() => console.log('Starting test suite'));
+afterAll(() => console.log('Ending test suite'));
+
+/*
+  You can use describe to run messages on specific tests
+  Write the desired tests inside the describe
+*/
+
+describe('Checking a specific test', () => {
+  beforeEach(() => console.log('This test is inside a describe'));
+
+  test('Adds 3 + 3 to equal 6', () => {
+    expect(functions.add(3, 3)).toBe(6);
+  });
+});
+
 /* Understanding the structure of the tests
     test(descriptionString, callbackFunction);
     descriptionString = 'The test scenario';
