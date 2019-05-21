@@ -50,3 +50,22 @@ test('User should be Mister Brother', () => {
 test('Should be less than, or equal 25', () => {
   expect(functions.square(5)).toBeLessThanOrEqual(25);
 });
+
+/*
+  You can test async data, using promises
+  expect.assertions(n) must be called with the number of assertions as param
+  You must return the async function
+*/
+test('Should fetch user Ervin Howell', () => {
+  expect.assertions(1);
+  return functions.fetchUser().then(data => {
+    expect(data.name).toEqual('Ervin Howell');
+  });
+});
+
+// Async data test, using async await
+test('Should fetch user Ervin Howell', async () => {
+  expect.assertions(1);
+  const data = await functions.fetchUser();
+  expect(data.name).toEqual('Ervin Howell');
+});
